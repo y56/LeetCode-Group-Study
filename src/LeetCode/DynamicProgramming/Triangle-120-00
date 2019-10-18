@@ -1,0 +1,11 @@
+class Solution:
+    def minimumTotal(self, triangle):# List[List[int]]) -> int:
+        for layerIndex in range(len(triangle) - 1, 0, -1):        
+            layer = triangle[layerIndex]
+            aboveLayer = triangle[layerIndex - 1]
+            for i in range(len(layer) - 1):
+                if layer[i] <= layer[i + 1]:
+                    aboveLayer[i] += layer[i]
+                else:
+                    aboveLayer[i] += layer[i+1]
+        return triangle[0][0]
